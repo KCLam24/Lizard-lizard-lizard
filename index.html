@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sound Clicker</title>
+<style>
+  body {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    height: 100vh;
+    margin: 0;
+  }
+  .icon {
+    width: 150px;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+  }
+  .icon.pop {
+    transform: scale(1.2);
+  }
+</style>
+</head>
+<body>
+
+<!-- Images with matching mp3 sound -->
+<img src="euuu.png" alt="euuu" class="icon" data-sound="euuu.mp3">
+<img src="open.png" alt="open" class="icon" data-sound="open.mp3">
+<img src="guh.png" alt="guh" class="icon" data-sound="guh.mp3">
+<img src="lizard.png" alt="lizard" class="icon" data-sound="lizard.mp3">
+<img src="shock.png" alt="shock" class="icon" data-sound="shock.mp3">
+
+<script>
+  document.querySelectorAll('.icon').forEach(icon => {
+    icon.addEventListener('click', () => {
+      // Pop animation
+      icon.classList.add('pop');
+      setTimeout(() => icon.classList.remove('pop'), 100);
+
+      // Play sound (new instance for spam clicks)
+      const sound = new Audio(icon.dataset.sound);
+      sound.play();
+    });
+  });
+</script>
+
+</body>
+</html>
